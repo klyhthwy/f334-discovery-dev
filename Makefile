@@ -5,20 +5,25 @@ OUTPUT_DIRECTORY := _build
 PROJ_DIR  := .
 SDK_ROOT  := $(PROJ_DIR)/STM32Cube_FW_F3_V1.9.0
 CMSIS_DIR := $(SDK_ROOT)/Drivers/CMSIS
+HAL_DIR	  := $(SDK_ROOT)/Drivers/STM32F3xx_HAL_Driver
 #RTOS_DIR := $(PROJ_DIR)/FreeRTOS/FreeRTOSv9.0.0
 
 LINKER_SCRIPT := $(SDK_ROOT)/Projects/STM32F3348-Discovery/Templates/SW4STM32/STM32F3348-Discovery/STM32F334C8Tx_FLASH.ld
 
 # Source files common to all targets
 SRC_FILES += \
+  $(HAL_DIR)/Src/stm32f3xx_hal_gpio.c \
   $(CMSIS_DIR)/Device/ST/STM32F3xx/Source/Templates/gcc/startup_stm32f334x8.s \
   $(CMSIS_DIR)/Device/ST/STM32F3xx/Source/Templates/system_stm32f3xx.c \
+  $(SDK_ROOT)/Drivers/BSP/STM32F3348-Discovery/stm32f3348_discovery.c \
   $(PROJ_DIR)/Source/main.c \
 
 # Include folders common to all targets
 INC_FOLDERS += \
+  $(HAL_DIR)/Inc \
   $(CMSIS_DIR)/Include \
   $(CMSIS_DIR)/Device/ST/STM32F3xx/Include \
+  $(SDK_ROOT)/Drivers/BSP/STM32F3348-Discovery \
   $(PROJ_DIR)/Include \
 
 # Libraries common to all targets

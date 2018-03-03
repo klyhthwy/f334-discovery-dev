@@ -10,12 +10,14 @@
 
 
 #include <stdint.h>
+#include "stm32f3348_discovery.h"
 
 
 int main(void)
 {
+    BSP_LED_Init(LED_BLUE);
+    BSP_LED_On(LED_BLUE);
     for(;;)
     {
-
     }
 }
